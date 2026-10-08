@@ -16,5 +16,3 @@ npm run dev
 `app/layout.tsx` מגדיר Metadata, עברית ו־RTL. `app/robots.ts` ו־`app/sitemap.ts` יוצרים את קובצי SEO. `lib/site.ts` מגדיר כתובת ונתוני Person, WebSite ו־Book. הגדירו `NEXT_PUBLIC_SITE_URL` ב־`.env.local` לדומיין הסופי לפני build, לפי `.env.example`.
 
 `dist/`, `server.cjs` והדוחות ב־`.qa/` נשמרו מהגרסה הסטטית הקודמת. הפעלה באמצעות Next.js אינה משתמשת בהם. ציוני Lighthouse הקודמים אינם מדידה של גרסת Next.js. פריסת Next.js דורשת אחסון תומך Next.js, כגון Vercel או שרת Node; הגדרת Sites הקודמת מפנה עדיין לגרסה הסטטית.
-
-מקורות התוכן: https://he.wikipedia.org/wiki/אילה_דקל ; https://heb.hartman.org.il/person/ayala-dekel/ ; https://www.e-vrit.co.il/Author/13421/ . צילום: מכון הרטמן. עטיפות: עברית.

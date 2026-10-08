@@ -1,3 +1,10 @@
 .qa/
 .sites-runtime/
 reports/
+
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+.env*
+!.env.example
