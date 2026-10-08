@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ayala-dekel-stories.fairysiren1.chatgpt.site/sitemap.xml
