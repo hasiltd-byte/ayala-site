@@ -1,12 +1,13 @@
 "use client";
 import {useState,type MouseEvent} from "react";
-export default function BookCatalog(){const [filter,setFilter]=useState('all');const count=filter==='all'?5:filter==='fiction'?3:1;function handleFilter(event:MouseEvent<HTMLDivElement>){const target=(event.target as HTMLElement).closest<HTMLButtonElement>('button[data-filter]');if(target?.dataset.filter)setFilter(target.dataset.filter)}return (<section className="wrap section" id="books" aria-labelledby="books-title">
+import {variations,type Variation} from "../lib/variations";
+export default function BookCatalog({variant = "classic"}: {variant?: Variation}){const copy=variations[variant];const [filter,setFilter]=useState('all');const count=filter==='all'?5:filter==='fiction'?3:1;function handleFilter(event:MouseEvent<HTMLDivElement>){const target=(event.target as HTMLElement).closest<HTMLButtonElement>('button[data-filter]');if(target?.dataset.filter)setFilter(target.dataset.filter)}return (<section className="wrap section" id="books" aria-labelledby="books-title">
 <div className="section-head">
 <div>
 <div className="eyebrow">על המדף</div>
-<h2 id="books-title">עולם שלם.<br />בין שתי כריכות.</h2>
+<h2 id="books-title">{copy.booksTitle}</h2>
 </div>
-<p>חמישה ספרים, קולות שונים, וחוט אחד שמחבר ביניהם: הרצון לראות את האנשים שמאחורי הסיפור.</p>
+<p>{copy.booksIntro}</p>
 </div>
 <div onClick={handleFilter} className="filters" aria-label="סינון ספרים לפי סוג">
 <button data-filter="all" aria-pressed={filter === "all"} >כל הספרים</button>
@@ -22,7 +23,7 @@ export default function BookCatalog(){const [filter,setFilter]=useState('all');c
 </div>
 <div className="meta">2026 · התחנה · עדויות</div>
 <h3>לוחמות</h3>
-<p>עשרים קולות של נשים שלקחו חלק בלחימה. אומץ, אחריות והסיפורים שצריכים להישמע.</p>
+<p>{variant === "classic" ? "עשרים קולות של נשים שלקחו חלק בלחימה. אומץ, אחריות והסיפורים שצריכים להישמע." : "עשרים נשים, עשרים סיפורים של אומץ. הזמנה להקשיב מקרוב לקולות של מי שהיו שם."}</p>
 <details>
 <summary>עוד על הספר</summary>
 <p>מונולוגים של לוחמות בצה״ל במלחמת חרבות ברזל, המעניקים מקום לחוויותיהן האישיות.</p>
@@ -35,7 +36,7 @@ export default function BookCatalog(){const [filter,setFilter]=useState('all');c
 </div>
 <div className="meta">2025 · התחנה · פרוזה</div>
 <h3>עד שתחזור אליי</h3>
-<p>אהבה, משפחה וגעגוע בצל המילואים. סיפור על מי שיוצאים, ועל מי שנשארים בבית.</p>
+<p>{variant === "classic" ? "אהבה, משפחה וגעגוע בצל המילואים. סיפור על מי שיוצאים, ועל מי שנשארים בבית." : "כשהלב מחכה בדלת. סיפור על אהבה ועל הניסיון להחזיק בית כשהמלחמה רחוקה — וקרובה כל כך."}</p>
 <details>
 <summary>עוד על הספר</summary>
 <p>יצירה על זוג המנסה לשמור על חיי המשפחה בתקופת המלחמה, המבוססת על אירועים מחייה של אילה.</p>
@@ -48,7 +49,7 @@ export default function BookCatalog(){const [filter,setFilter]=useState('all');c
 </div>
 <div className="meta">2024 · שתיים · רומן</div>
 <h3>רסיסי לילה</h3>
-<p>יומנה של חיותה בוסל פוגש אישה צעירה בת זמננו. שתי תקופות, ושאלות על זהות נשית.</p>
+<p>{variant === "classic" ? "יומנה של חיותה בוסל פוגש אישה צעירה בת זמננו. שתי תקופות, ושאלות על זהות נשית." : "שתי נשים, מאה שנים ביניהן, ושאלות שממשיכות להדהד. לפעמים קול מהעבר מאיר את הדרך שלנו."}</p>
 <details>
 <summary>עוד על הספר</summary>
 <p>רומן השוזר את סיפורה ההיסטורי של החלוצה חיותה בוסל עם דמות בדיונית במאה ה־21.</p>
@@ -61,7 +62,7 @@ export default function BookCatalog(){const [filter,setFilter]=useState('all');c
 </div>
 <div className="meta">2022 · ידיעות ספרים · ילדים ונוער</div>
 <h3>חבורה לא סודית</h3>
-<p>הרפתקה עכשווית שפוגשת אגדות תלמודיות. עם שירלי צפת דוידאי.</p>
+<p>{variant === "classic" ? "הרפתקה עכשווית שפוגשת אגדות תלמודיות. עם שירלי צפת דוידאי." : "חברות, סקרנות והרפתקה: סיפורים עתיקים מקבלים חיים חדשים בעולמם של ילדים. עם שירלי צפת דוידאי."}</p>
 <details>
 <summary>עוד על הספר</summary>
 <p>העולם התלמודי ועולמם של ילדים היום נפגשים בספר הרפתקאות על חברות ומציאת מקום בחבורה.</p>
@@ -74,7 +75,7 @@ export default function BookCatalog(){const [filter,setFilter]=useState('all');c
 </div>
 <div className="meta">2021 · שתיים · רומן</div>
 <h3>הביתה הלוך חזור</h3>
-<p>מסע בעקבות סוד משפחתי, הקהילה היהודית במצרים והדרך הארוכה למצוא בית.</p>
+<p>{variant === "classic" ? "מסע בעקבות סוד משפחתי, הקהילה היהודית במצרים והדרך הארוכה למצוא בית." : "סוד משפחתי פותח דלת לעולם אחר. מסע בין מצרים לישראל, בין מה שסיפרו לנו למה שעוד נותר לגלות."}</p>
 <details>
 <summary>עוד על הספר</summary>
 <p>ספר הביכורים של אילה עוסק במפגש בין זהות דתית וחילונית ובסיפורן של נשים בקהילה היהודית במצרים.</p>

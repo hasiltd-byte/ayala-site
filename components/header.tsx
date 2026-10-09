@@ -1,6 +1,6 @@
 "use client";
 import {useState,useEffect} from "react";
-export default function Header(){const [open,setOpen]=useState(false);useEffect(()=>{const close=(event:KeyboardEvent)=>{if(event.key==='Escape')setOpen(false)};document.addEventListener('keydown',close);return()=>document.removeEventListener('keydown',close)},[]);return (<header className="header">
+export default function Header({variant = "classic"}: {variant?: "classic" | "warm" | "blue"}){const [open,setOpen]=useState(false);useEffect(()=>{const close=(event:KeyboardEvent)=>{if(event.key==='Escape')setOpen(false)};document.addEventListener('keydown',close);return()=>document.removeEventListener('keydown',close)},[]);return (<header className="header">
 <div className="wrap topbar">
 <a className="brand" href="#top" aria-label="אילה דקל — עמוד הבית">
 <svg className="brand-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
@@ -16,7 +16,7 @@ export default function Header(){const [open,setOpen]=useState(false);useEffect(
 <a href="#meetings">מפגשים והרצאות</a>
 <a href="#words">בין המילים</a>
 </nav>
-<a className="button header-cta" href="#contact">נהיה בקשר</a>
+<a className="button header-cta" href="#contact">{variant === "classic" ? "נהיה בקשר" : "בואו נדבר"}</a>
 <button className="menu-toggle" aria-label="פתיחה וסגירה של התפריט" aria-controls="navigation" aria-expanded={open} onClick={() => setOpen(!open)}>☰</button>
 </div>
 </header>);}
